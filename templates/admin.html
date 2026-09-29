@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>⚙️ Admin Dashboard</h1>
+
+    <!-- Statistics -->
+
+    <div class="result">
+        <h2>🗳️ Total Votes</h2>
+
+        <h1>
+            {{ total_votes }}
+        </h1>
+    </div>
+
+
+    <div class="result">
+        <h2>⛓️ Total Blocks</h2>
+
+        <h1>
+            {{ blocks }}
+        </h1>
+    </div>
+
+
+    <div class="result">
+
+        <h2>🔐 Blockchain Status</h2>
+
+        {% if valid %}
+
+            <p style="color: green; font-size: 20px;">
+                ✅ Blockchain Valid
+            </p>
+
+        {% else %}
+
+            <p style="color: red; font-size: 20px;">
+                ❌ Blockchain Invalid
+            </p>
+
+        {% endif %}
+
+    </div>
+
+
+    <hr>
+
+
+    <!-- Candidate Results -->
+
+    <h2>📊 Candidate Results</h2>
+
+    {% for candidate in candidates %}
+
+    <div class="candidate">
+
+        <h2>
+            {{ candidate[1] }}
+        </h2>
+
+        <p>
+            Votes:
+            <strong>
+                {{ candidate[2] }}
+            </strong>
+        </p>
+
+    </div>
+
+    {% endfor %}
+
+
+    <hr>
+
+
+    <!-- Admin Actions -->
+
+    <h2>🔧 Admin Actions</h2>
+
+    <p>
+        <a href="/blockchain">
+            🔗 View Blockchain
+        </a>
+    </p>
+
+    <p>
+        <a href="/results">
+            📊 View Public Results
+        </a>
+    </p>
+
+    <p>
+        <a href="/admin/logout">
+            🚪 Admin Logout
+        </a>
+    </p>
+
+</div>
+
+</body>
+
+</html>

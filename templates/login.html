@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Voting System</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Blockchain Voting System</h1>
+
+    <h2>Voter Login</h2>
+
+    <form method="POST" action="/login">
+
+        <input
+            type="text"
+            name="voter_id"
+            placeholder="Voter ID"
+            required
+        >
+
+        <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            required
+        >
+
+        <button type="submit">Login</button>
+
+    </form>
+
+    <p>
+        New voter?
+        <a href="/register">Register here</a>
+    </p>
+
+</div>
+
+</body>
+</html>

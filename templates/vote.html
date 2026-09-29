@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cast Vote</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Cast Your Vote</h1>
+
+    <h2>Welcome, {{ name }}</h2>
+
+    <form method="POST">
+
+        {% for candidate in candidates %}
+
+        <div class="candidate">
+
+            <input
+                type="radio"
+                name="candidate"
+                value="{{ candidate[0] }}"
+                required
+            >
+
+            {{ candidate[1] }}
+
+        </div>
+
+        {% endfor %}
+
+        <button type="submit">
+            Cast Vote
+        </button>
+
+    </form>
+
+    <br>
+
+    <a href="/logout">Logout</a>
+
+</div>
+
+</body>
+
+</html>
