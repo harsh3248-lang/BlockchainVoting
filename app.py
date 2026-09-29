@@ -263,6 +263,25 @@ def admin():
         valid=blockchain.is_chain_valid()
     )
 
+# =========================================================
+# RESET VOTES
+# =========================================================
+
+@app.route("/admin/reset", methods=["POST"])
+def reset_votes():
+
+    global blockchain
+
+    if not session.get("admin"):
+        return redirect(url_for("admin_login"))
+
+    # Reset votes in the database
+    database.reset_votes()
+
+    # Reset blockchain
+    blockchain = Blockchain()
+
+    return redirect(url_for("admin"))
 
 # =========================================================
 # ADMIN LOGOUT
@@ -285,3 +304,5 @@ def admin_logout():
 if __name__ == "__main__":
 
     app.run(debug=True)
+
+

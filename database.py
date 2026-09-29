@@ -167,3 +167,17 @@ def cast_vote(voter_id, candidate_id):
     conn.close()
 
     return True
+
+def reset_votes():
+
+    conn = get_connection()
+    cursor = conn.cursor()
+
+    # Reset all candidate vote counts
+    cursor.execute("UPDATE candidates SET votes = 0")
+
+    # Allow all voters to vote again
+    cursor.execute("UPDATE voters SET has_voted = 0")
+
+    conn.commit()
+    conn.close()
