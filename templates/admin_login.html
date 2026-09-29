@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title>Admin Dashboard</title>
+    <title>Admin Login</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 
@@ -10,50 +10,30 @@
 
 <div class="container">
 
-    <h1>🔐 Admin Dashboard</h1>
+    <h1>🔐 Admin Login</h1>
 
     <p style="text-align: center;">
         Election Administration Panel
     </p>
 
-    <h2>Voting Statistics</h2>
+    <form method="POST">
 
-    <p><strong>Total Votes:</strong> {{ total_votes }}</p>
+        <input
+            type="text"
+            name="username"
+            placeholder="Admin Username"
+            required
+        >
 
-    <p><strong>Total Blocks:</strong> {{ blocks }}</p>
-
-    <p>
-        <strong>Blockchain Status:</strong>
-        {% if valid %}
-            Valid
-        {% else %}
-            Invalid
-        {% endif %}
-    </p>
-
-    <h2>Candidate Results</h2>
-
-    <table>
-        <tr>
-            <th>Candidate</th>
-            <th>Votes</th>
-        </tr>
-
-        {% for candidate in candidates %}
-        <tr>
-            <td>{{ candidate[1] }}</td>
-            <td>{{ candidate[2] }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-
-    <br>
-
-    <form action="{{ url_for('reset_votes') }}" method="POST"
-          onsubmit="return confirm('Are you sure you want to reset all votes?');">
+        <input
+            type="password"
+            name="password"
+            placeholder="Admin Password"
+            required
+        >
 
         <button type="submit">
-            Reset Votes
+            Login as Admin
         </button>
 
     </form>
@@ -61,7 +41,7 @@
     <br>
 
     <p style="text-align: center;">
-        <a href="{{ url_for('admin_logout') }}">Logout</a>
+        <a href="/">← Back to Voter Login</a>
     </p>
 
 </div>
